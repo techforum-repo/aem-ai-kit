@@ -1,0 +1,20 @@
+name: Check generated files
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generated rules and skills match their sources
+        run: python3 scripts/build.py --check
+      - name: JSON configuration is valid
+        run: |
+          for f in claude/.mcp.json claude/.claude/settings.json copilot/.github/lsp.json copilot/.vscode/settings.json; do
+            python3 -m json.tool "$f" > /dev/null || { echo "Invalid JSON: $f"; exit 1; }
+          done
+      - name: Hook scripts compile
+        run: python3 -m py_compile claude/.claude/hooks/*.py

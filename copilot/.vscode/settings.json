@@ -1,0 +1,64 @@
+{
+  "github.copilot.chat.codeGeneration.instructions": [
+    { "file": ".github/instructions/core-java.instructions.md" },
+    { "file": ".github/instructions/core-java-security.instructions.md" },
+    { "file": ".github/instructions/core-java-performance.instructions.md" },
+    { "file": ".github/instructions/ui-apps.instructions.md" },
+    { "file": ".github/instructions/ui-apps-structure.instructions.md" },
+    { "file": ".github/instructions/ui-content.instructions.md" },
+    { "file": ".github/instructions/ui-config.instructions.md" },
+    { "file": ".github/instructions/all-module.instructions.md" },
+    { "file": ".github/instructions/frontend-base.instructions.md" },
+    { "file": ".github/instructions/frontend-react.instructions.md" },
+    { "file": ".github/instructions/frontend-spa.instructions.md" },
+    { "file": ".github/instructions/devops.instructions.md" },
+    { "file": ".github/instructions/dispatcher.instructions.md" },
+    { "file": ".github/instructions/content-fragments.instructions.md" },
+    { "file": ".github/instructions/caconfig.instructions.md" },
+    { "file": ".github/instructions/oak-index.instructions.md" },
+    { "file": ".github/instructions/i18n.instructions.md" },
+    { "file": ".github/instructions/accessibility.instructions.md" },
+    { "file": ".github/instructions/wcm-core-components.instructions.md" },
+    { "file": ".github/instructions/hooks.instructions.md" }
+  ],
+  "github.copilot.chat.testGeneration.instructions": [
+    { "file": ".github/instructions/core-java-tests.instructions.md" },
+    { "file": ".github/instructions/integration-tests.instructions.md" },
+    { "file": ".github/instructions/frontend-base.instructions.md" },
+    { "file": ".github/instructions/frontend-react.instructions.md" },
+    { "file": ".github/instructions/frontend-spa.instructions.md" },
+    { "file": ".github/instructions/accessibility.instructions.md" }
+  ],
+  "github.copilot.chat.codeReview.instructions": [
+    { "file": ".github/instructions/core-java-security.instructions.md" },
+    { "file": ".github/instructions/core-java-performance.instructions.md" },
+    { "file": ".github/instructions/ui-apps.instructions.md" },
+    { "file": ".github/instructions/ui-apps-structure.instructions.md" },
+    { "file": ".github/instructions/ui-content.instructions.md" },
+    { "file": ".github/instructions/ui-config.instructions.md" },
+    { "file": ".github/instructions/all-module.instructions.md" },
+    { "file": ".github/instructions/devops.instructions.md" },
+    { "file": ".github/instructions/dispatcher.instructions.md" },
+    { "file": ".github/instructions/frontend-base.instructions.md" },
+    { "file": ".github/instructions/frontend-react.instructions.md" },
+    { "file": ".github/instructions/frontend-spa.instructions.md" },
+    { "file": ".github/instructions/content-fragments.instructions.md" },
+    { "file": ".github/instructions/caconfig.instructions.md" },
+    { "file": ".github/instructions/oak-index.instructions.md" },
+    { "file": ".github/instructions/i18n.instructions.md" },
+    { "file": ".github/instructions/accessibility.instructions.md" },
+    { "file": ".github/instructions/wcm-core-components.instructions.md" },
+    { "file": ".github/instructions/integration-tests.instructions.md" },
+    { "file": ".github/instructions/hooks.instructions.md" }
+  ],
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "text": "Write commit messages that are concise and describe the purpose of the change, not just what changed. Reference the AEM module (core, ui.apps, ui.content, ui.config, dispatcher, frontend) in the subject line when the change is scoped to one module."
+    }
+  ],
+  "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [
+    {
+      "text": "Draft PR descriptions with: (1) modules changed, (2) purpose of the change, (3) Cloud Manager or OakPAL risks if any, (4) SonarCloud or quality gate impact if any, (5) testing notes. Keep it factual and concise."
+    }
+  ]
+}

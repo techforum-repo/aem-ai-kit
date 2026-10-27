@@ -1,0 +1,10 @@
+# Python cache
+__pycache__/
+
+# Personal Claude Code overrides
+.claude/settings.local.json
+claude/.claude/settings.local.json
+
+# System files
+.DS_Store
+Thumbs.db

@@ -51,3 +51,7 @@ The safety hooks in `claude/.claude/hooks/` have tests: `python3 -m unittest dis
 A rule's `paths` list becomes `paths:` for Claude Code and a comma-separated `applyTo:` for Copilot. To reference another rule from a rule body, write `{{rule:core-java-security}}`; the build turns it into the right file name for each tool.
 
 Tool-specific pieces stay in their own layout: Claude Code hooks, agents, commands and settings live in `claude/`; Copilot prompt files, LSP config and VS Code settings live in `copilot/`.
+
+## License
+
+[MIT](LICENSE)

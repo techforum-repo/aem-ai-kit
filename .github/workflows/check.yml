@@ -18,3 +18,5 @@ jobs:
           done
       - name: Hook scripts compile
         run: python3 -m py_compile claude/.claude/hooks/*.py
+      - name: Hook tests
+        run: python3 -m unittest discover -v tests

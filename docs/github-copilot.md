@@ -162,7 +162,7 @@ These apply automatically in VS Code without any manual prompt selection.
 ### `AGENTS.md`
 Universal agent instructions file for cross-tool compatibility. Provides the same core AEM conventions to tools that support `AGENTS.md` natively (GitHub Copilot Workspace, OpenAI Codex, and others) without requiring tool-specific configuration files.
 
-To reduce drift, keep broad repository rules in `.github/copilot-instructions.md`, keep `AGENTS.md` aligned with those broad rules, and keep path-specific detail in `.github/instructions/`.
+`AGENTS.md` is generated from `.github/copilot-instructions.md` by `scripts/build.py`, so edit `copilot-instructions.md` and rebuild; keep path-specific detail in `.github/instructions/`.
 
 ## Suggested next steps
 

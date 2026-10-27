@@ -4,6 +4,7 @@
   rules/<name>.md  ->  claude/.claude/rules/<name>.md                    (paths:)
                    ->  copilot/.github/instructions/<name>.instructions.md (applyTo:)
   skills/<name>/   ->  claude/.claude/skills/<name>/  and  copilot/.github/skills/<name>/
+  copilot/.github/copilot-instructions.md  ->  copilot/AGENTS.md  (for Codex and other AGENTS.md readers)
 
 Run with --check to verify the generated files are up to date without writing (used in CI).
 Standard library only.
@@ -25,6 +26,8 @@ SKILLS_DIR = ROOT / "skills"
 CLAUDE_RULES = Path("claude/.claude/rules")
 COPILOT_RULES = Path("copilot/.github/instructions")
 SKILL_TARGETS = [Path("claude/.claude/skills"), Path("copilot/.github/skills")]
+COPILOT_INSTRUCTIONS = Path("copilot/.github/copilot-instructions.md")
+AGENTS_FILE = Path("copilot/AGENTS.md")
 
 FRONTMATTER = re.compile(r"^---\n(.*?)\n---\n", re.DOTALL)
 RULE_REF = re.compile(r"\{\{rule:([a-z0-9-]+)\}\}")
@@ -87,6 +90,17 @@ def write_rules(out_root: Path, names: list[str]) -> None:
         )
 
 
+def write_agents_file(out_root: Path) -> None:
+    """AGENTS.md carries the same repository-wide rules as copilot-instructions.md under a neutral title."""
+    text = (ROOT / COPILOT_INSTRUCTIONS).read_text(encoding="utf-8")
+    title, _, body = text.partition("\n")
+    if not title.startswith("# "):
+        raise ValueError(f"{COPILOT_INSTRUCTIONS} must start with a '# ' title")
+    note = f"<!-- Generated from {COPILOT_INSTRUCTIONS.relative_to('copilot')} by scripts/build.py. Edit the source, not this file. -->\n"
+    (out_root / AGENTS_FILE).parent.mkdir(parents=True, exist_ok=True)
+    (out_root / AGENTS_FILE).write_text(f"# Agent Instructions\n{note}{body}", encoding="utf-8")
+
+
 def build(out_root: Path) -> None:
     for directory in [CLAUDE_RULES, COPILOT_RULES, *SKILL_TARGETS]:
         target = out_root / directory
@@ -97,6 +111,7 @@ def build(out_root: Path) -> None:
     for skill in sorted(p for p in SKILLS_DIR.iterdir() if p.is_dir()):
         for target in SKILL_TARGETS:
             shutil.copytree(skill, out_root / target / skill.name)
+    write_agents_file(out_root)
 
 
 def differences(left: Path, right: Path, prefix: Path = Path()) -> list[str]:
@@ -128,6 +143,9 @@ def main() -> int:
                 stale.append(str(directory))
                 continue
             stale += [str(directory / d) for d in differences(Path(scratch) / directory, ROOT / directory)]
+        current = ROOT / AGENTS_FILE
+        if not current.exists() or current.read_bytes() != (Path(scratch) / AGENTS_FILE).read_bytes():
+            stale.append(str(AGENTS_FILE))
     if stale:
         print("Generated files are out of date. Run: python3 scripts/build.py")
         for path in stale:

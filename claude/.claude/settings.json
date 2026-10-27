@@ -26,6 +26,8 @@
       "Bash(del /f /s *)",
       "Bash(curl *admin:admin*)",
       "Bash(mvn deploy*)",
+      "Bash(mvn * deploy*)",
+      "Bash(mvn * release:*)",
       "Bash(mvn release:*)",
       "Bash(git push --force*)"
     ],

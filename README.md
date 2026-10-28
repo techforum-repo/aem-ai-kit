@@ -1,5 +1,7 @@
 # AEM AI Kit
 
+[![CI](https://github.com/techforum-repo/aem-ai-kit/actions/workflows/check.yml/badge.svg)](https://github.com/techforum-repo/aem-ai-kit/actions/workflows/check.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 Reusable AI coding-assistant setup for an enterprise Adobe Experience Manager as a Cloud Service (AEMaaCS) project, for both **Claude Code** and **GitHub Copilot**. Works on Windows, macOS and Linux.
 
 This repository replaces the former `aem-claude-code` and `aem-github-copilot` repositories. The module rules are now maintained once and generated for both tools, so the two setups can no longer drift apart.
